@@ -1,12 +1,8 @@
 package com.iessoterohernandez.concesionario.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
-import java.validation.constraints.NotNull;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Vehiculo {
@@ -14,8 +10,10 @@ public class Vehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
+    @Column(unique = true)
     private String numeroBastidor;
     @NotNull
+    @Column(unique = true)
     private String matricula;
     @NotNull
     private String marca;
@@ -27,7 +25,17 @@ public class Vehiculo {
     private Double precioVenta;
     private Integer anoFabricacion;
 
-    public Vehiculo() {
+    public Vehiculo() {}
+
+    public Vehiculo(String numBas, String matricula, String marca, String modelo, Integer potencia, Integer cilindrada, Double precio, Integer anoFab) {
+        this.numeroBastidor = numBas;
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.potencia = potencia;
+        this.cilindrada = cilindrada;
+        this.precioVenta = precio;
+        this.anoFabricacion = anoFab;
     }
 
     public Long getId() {

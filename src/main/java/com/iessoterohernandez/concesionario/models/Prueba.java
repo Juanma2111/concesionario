@@ -1,10 +1,15 @@
 package com.iessoterohernandez.concesionario.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 @Entity
 public class Prueba {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	@NotNull
     @ManyToOne
     private Cliente cliente;
@@ -16,8 +21,7 @@ public class Prueba {
 	@NotNull
     private Boolean realizada;
 
-    public Prueba() {
-    }
+    public Prueba() {}
 
     public Prueba(Cliente cliente, Vehiculo vehiculo, Date fechaHora, Boolean realizada) {
         this.cliente = cliente;
